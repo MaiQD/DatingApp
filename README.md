@@ -7,3 +7,8 @@ dotnet sln add API
 add-migration InitialDB -o Data/Migrations
 
 Update-Database
+
+Tạo project Angular
+ng new client
+Khởi động angular
+ng serve -o
