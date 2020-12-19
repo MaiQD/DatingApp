@@ -12,3 +12,8 @@ Tạo project Angular
 ng new client
 Khởi động angular
 ng serve -o
+
+thêm thư viện ngx-bootstrap
+ng add ngx-bootstrap 
+cài icon
+npm install font-awesome
