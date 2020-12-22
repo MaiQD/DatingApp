@@ -350,5 +350,5 @@ MigrationBackup/
 .ionide/
 
 appsettings.json
-
+appsettings.Development.json
 generateTrustedSSL
