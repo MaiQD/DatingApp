@@ -6,30 +6,31 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li *ngIf="loggedIn" class="nav-item ">
+                <li *ngIf="accountService.currentUser$|async" class="nav-item ">
                     <a class="nav-link" href="#">Matches</a>
                 </li>
-                <li *ngIf="loggedIn" class="nav-item">
+                <li *ngIf="accountService.currentUser$|async" class="nav-item">
                     <a class="nav-link" href="#">Lists</a>
                 </li>
-                <li *ngIf="loggedIn" class="nav-item">
+                <li *ngIf="accountService.currentUser$|async" class="nav-item">
                     <a class="nav-link" href="#">Messagers</a>
                 </li>
-                <li *ngIf="loggedIn" class="nav-item">
+                <li *ngIf="accountService.currentUser$|async" class="nav-item">
                     <a class="nav-link" href="#" (click)="logout()">Logout</a>
                 </li>
             </ul>
-            <div class="dropdown open" *ngIf="loggedIn">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown open" dropdown *ngIf="accountService.currentUser$|async">
+                <button class="btn btn-secondary dropdown-toggle" dropdownToggle type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Welcome User
                         </button>
-                <div class="dropdown-menu" aria-labelledby="triggerId">
+                <div class="dropdown-menu" *dropdownMenu aria-labelledby="triggerId">
                     <button class="dropdown-item" href="#">Edit Profile</button>
-                    <button class="dropdown-item disabled" href="#">Logout</button>
+                    <div class="dropdowndivider"></div>
+                    <button class="dropdown-item disabled" href="#" (click)="logout()">Logout</button>
                 </div>
             </div>
 
-            <form *ngIf="!loggedIn" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+            <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
                 <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username">
                 <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password" placeholder="Password">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>

@@ -9,14 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 	model: any = {
 	};
-	loggedIn: boolean;
-	constructor(private accountService: AccountService) {
+	constructor(public accountService: AccountService) {
 	}
 	ngOnInit() {
+		this.getCurrentUser();
 	}
 	login() {
 		this.accountService.login(this.model).subscribe(res => {
-			this.loggedIn = true;
 			console.log(res);
 		}, error =>{
 			console.error(error);
@@ -24,6 +23,13 @@ export class NavComponent implements OnInit {
 		})
 	}
 	logout(){
-		this.loggedIn = false;
+		this.accountService.logout();
+	}
+	getCurrentUser(){
+		this.accountService.currentUser$.subscribe(user=>{
+			//!! turn object to boolean
+		},error=>{
+			console.error(error);
+		})
 	}
 }
