@@ -1,4 +1,6 @@
 # DatingApp
+tài khoản: maiqd/123
+
 dotnet new sln
 donet new webapi -o API
 dotnet sln add API
@@ -19,3 +21,12 @@ ng add ngx-bootstrap
 npm install font-awesome
 
 Drop-database
+
+-- tạo component
+ng g c nav --skip-tests
+-- tạo service
+ng g s account --skip-tests
+trong angular 
+- () nghĩa là truyền từ view -> angular
+- [] nghĩa là nhận từ angular -> view
+- [()] nghĩa là binding 2 hướng
