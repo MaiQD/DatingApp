@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
 		
 	}
 	ngOnInit() {
-		//hiển thị danh sách user
 		this.setCurrentUser();
 	}
 	/// gán user hiện tại = user từ localStorage
