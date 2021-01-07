@@ -11,12 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 	title = 'Dating app title';
 	users :any;
-	constructor(private http: HttpClient, private accountService:AccountService){
+	constructor(private accountService:AccountService){
 		
 	}
 	ngOnInit() {
 		//hiển thị danh sách user
-		this.getUser();
 		this.setCurrentUser();
 	}
 	/// gán user hiện tại = user từ localStorage
@@ -24,13 +23,6 @@ export class AppComponent implements OnInit {
 	{
 		const user:User = JSON.parse(localStorage.getItem('user'));
 		this.accountService.setCurrentUser(user);
-	}
-	getUser(){
-		this.http.get('https://localhost:44356/api/Users/').subscribe(response =>{
-			this.users = response;
-		},error =>{
-			console.log(error);
-		})
 	}
 }
 

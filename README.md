@@ -2,7 +2,7 @@
 tài khoản: maiqd/123
 
 dotnet new sln
-donet new webapi -o API
+dotnet new webapi -o API
 dotnet sln add API
 
 --thêm mới migrations

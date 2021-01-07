@@ -1,0 +1,32 @@
+<div class="authentication-wrapper authentication-3">
+    <div class="authentication-inner">
+
+        <!-- Side container -->
+        <!-- Do not display the container on extra small, small and medium screens -->
+        <div [ngClass]="{'col-lg-8': registerMode,'col-lg-12': !registerMode}" class="d-none d-lg-flex  align-items-center ui-bg-cover ui-bg-overlay-container p-5" style="background-image: url('../assets/img/bg/21.jpg');">
+            <div class="ui-bg-overlay bg-dark opacity-50"></div>
+
+            <!-- Text -->
+            <div class="w-100 text-white px-5">
+                <h1 class="display-2 font-weight-bolder mb-4">JOIN OUR
+                    <br>COMMUNITY</h1>
+                <div class="text-large font-weight-light">
+                    Come on in to view your matches... all you need to do is sign up!
+                </div>
+                <button class="btn btn-lg btn-primary  mr-2 mt-1" (click)="registerToggle()">Register</button>
+                <button class="btn btn-lg btn-default mt-1">Learn more</button>
+            </div>
+
+            <!-- /.Text -->
+        </div>
+        <!-- / Side container -->
+
+        <!-- Form container -->
+        <div *ngIf="registerMode" [@slideInOut] class="d-flex col-lg-4 align-items-center bg-white p-5">
+            <app-register [usersFromHomeComponent]="users"></app-register>
+
+        </div>
+        <!-- / Form container -->
+
+    </div>
+</div>
