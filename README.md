@@ -30,3 +30,12 @@ trong angular
 - () nghĩa là truyền từ view -> angular
 - [] nghĩa là nhận từ angular -> view
 - [()] nghĩa là binding 2 hướng
+
+-- cài đặt ngx-toastr
+npm install ngx-toastr
+
+ng g guard auth --skip-tests (CanActivate)
+
+npm install bootswatch
+-- tạo module shared lưu trữ modules bên thứ 3
+ng g m shared --flat

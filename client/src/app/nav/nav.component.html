@@ -1,32 +1,31 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Dating App</a>
+        <a class="navbar-brand" routerLink="/" routerLinkActive='active'>Dating App</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li *ngIf="accountService.currentUser$|async" class="nav-item ">
-                    <a class="nav-link" href="#">Matches</a>
-                </li>
-                <li *ngIf="accountService.currentUser$|async" class="nav-item">
-                    <a class="nav-link" href="#">Lists</a>
-                </li>
-                <li *ngIf="accountService.currentUser$|async" class="nav-item">
-                    <a class="nav-link" href="#">Messagers</a>
-                </li>
-                <li *ngIf="accountService.currentUser$|async" class="nav-item">
-                    <a class="nav-link" href="#" (click)="logout()">Logout</a>
-                </li>
+                <ng-container *ngIf="accountService.currentUser$|async">
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLink="/members" routerLinkActive='active'>Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/lists" routerLinkActive='active'>Lists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/messages" routerLinkActive='active'>Messagers</a>
+                    </li>
+                </ng-container>
             </ul>
-            <div class="dropdown open" dropdown *ngIf="accountService.currentUser$|async">
+            <div class="dropdown open" dropdown *ngIf="(accountService.currentUser$|async) as user">
                 <button class="btn btn-secondary dropdown-toggle" dropdownToggle type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Welcome User
-                        </button>
+                    Welcome {{user.username| titlecase}}
+                </button>
                 <div class="dropdown-menu" *dropdownMenu aria-labelledby="triggerId">
                     <button class="dropdown-item" href="#">Edit Profile</button>
                     <div class="dropdowndivider"></div>
-                    <button class="dropdown-item disabled" href="#" (click)="logout()">Logout</button>
+                    <button class="dropdown-item" href="#" (click)="logout()">Logout</button>
                 </div>
             </div>
 
