@@ -21,9 +21,6 @@ export class NavComponent implements OnInit {
 	login() {
 		this.accountService.login(this.model).subscribe(res => {
 			this.router.navigateByUrl('/members')
-		}, error =>{
-			console.error(error);
-			this.toastr.error(error.error);
 		})
 	}
 	logout(){

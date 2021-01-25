@@ -39,3 +39,6 @@ ng g guard auth --skip-tests (CanActivate)
 npm install bootswatch
 -- tạo module shared lưu trữ modules bên thứ 3
 ng g m shared --flat
+-- tạo interceptor error
+ng g interceptor error --skip-tests
+-- thêm es2019 vào file tsconfig.json
