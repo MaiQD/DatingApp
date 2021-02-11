@@ -42,3 +42,6 @@ ng g m shared --flat
 -- tạo interceptor error
 ng g interceptor error --skip-tests
 -- thêm es2019 vào file tsconfig.json
+
+thêm thư viện 
+AutoMapper.Extensions.Microsoft.DependencyInjection

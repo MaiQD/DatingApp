@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister= new EventEmitter();
   model: any = {
   };
+  errors: string[]= [];
   constructor(public accountService: AccountService,
     private toastr: ToastrService) { }
 
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
         console.log(res);
         this.cancel();
     },(error)=>{
+      this.errors= error;
       console.log(error);
       this.toastr.error(error.error);
     })

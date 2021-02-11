@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Helper;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,9 +18,11 @@ namespace API.Extensions
 		{
 			//tạo dependency injection cho Token Service
 			services.AddScoped<ITokenService, TokenService>();
+			services.AddScoped<IUserRepository, UserRepositoty>();
+			services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 			services.AddDbContext<DataContext>(options =>
 			{
-				options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+				options.UseSqlite(_config.GetConnectionString("DefaultConnection")).EnableSensitiveDataLogging();
 			});
 			return services;
 		}

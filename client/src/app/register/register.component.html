@@ -25,6 +25,11 @@
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="model.password">
             </div>
+            <ng-container *ngIf="errors.length>0">
+                <ul class="text-danger">
+                    <li *ngFor="let error of errors">{{error}}</li>
+                </ul>
+            </ng-container>
             <button type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
             <a class="btn btn-secondary btn-block " href="javascript:void(0)" (click)="cancel()">Cancel</a>
             <div class=" small mt-4">
@@ -32,6 +37,7 @@
                 <a href="javascript:void(0)">terms of service and privacy policy</a>. We’ll occasionally send you account related emails.
             </div>
         </form>
+
         <!-- / Form -->
 
         <div class="text-center text-muted">
