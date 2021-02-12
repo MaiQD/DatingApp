@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { error } from 'protractor';
+import { environment } from 'src/environments/environment';
 @Injectable({
 	providedIn: 'root'
 })
 export class AccountService {
-	baseUrl = "https://localhost:44356/api/"
+	baseUrl = environment.apiUrl;
 	//chỉ lưu 1 user
 	private currentUserSource = new ReplaySubject<User>(1);
 	currentUser$ = this.currentUserSource.asObservable();

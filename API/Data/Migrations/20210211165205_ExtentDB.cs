@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Data.Migrations
 {
-    public partial class ExtendedUserEntity : Migration
+    public partial class ExtentDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,6 +41,12 @@ namespace API.Data.Migrations
 
             migrationBuilder.AddColumn<string>(
                 name: "Interests",
+                table: "AppUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Introduction",
                 table: "AppUsers",
                 type: "TEXT",
                 nullable: true);
@@ -119,6 +125,10 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Interests",
+                table: "AppUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Introduction",
                 table: "AppUsers");
 
             migrationBuilder.DropColumn(

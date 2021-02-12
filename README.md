@@ -37,10 +37,12 @@ npm install ngx-toastr
 ng g guard auth --skip-tests (CanActivate)
 
 npm install bootswatch
+npm install @kolkov/ngx-gallery
 -- tạo module shared lưu trữ modules bên thứ 3
 ng g m shared --flat
 -- tạo interceptor error
 ng g interceptor error --skip-tests
+ng g interceptor jwt --skip-tests
 -- thêm es2019 vào file tsconfig.json
 
 thêm thư viện 
