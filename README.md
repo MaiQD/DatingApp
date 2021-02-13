@@ -37,6 +37,7 @@ npm install bootswatch
 npm install @kolkov/ngx-gallery
 npm install @angular/cdk
 ng add ngx-spinner
+npm install ng2-file-upload
 
 
 -- tạo module shared lưu trữ modules bên thứ 3
@@ -50,6 +51,7 @@ ng g interceptor loading --skip-tests
 -------------------Api
 thêm thư viện 
 AutoMapper.Extensions.Microsoft.DependencyInjection
+CloudinaryDotNet
 
 trong angular 
 - () nghĩa là truyền từ view -> angular
