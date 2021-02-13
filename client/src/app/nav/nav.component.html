@@ -26,7 +26,7 @@
                     Welcome {{user.username| titlecase}}
                 </button>
                 <div class="dropdown-menu" *dropdownMenu aria-labelledby="triggerId">
-                    <button class="dropdown-item" href="#">Edit Profile</button>
+                    <button routerLink="/member/edit" class="dropdown-item" href="#">Edit Profile</button>
                     <div class="dropdowndivider"></div>
                     <button class="dropdown-item" href="#" (click)="logout()">Logout</button>
                 </div>

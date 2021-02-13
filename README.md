@@ -26,24 +26,33 @@ Drop-database
 ng g c nav --skip-tests
 -- tạo service
 ng g s account --skip-tests
-trong angular 
-- () nghĩa là truyền từ view -> angular
-- [] nghĩa là nhận từ angular -> view
-- [()] nghĩa là binding 2 hướng
+ng g s busy --skip-test
 
 -- cài đặt ngx-toastr
 npm install ngx-toastr
 
 ng g guard auth --skip-tests (CanActivate)
-
+ng g guard prevent-unsaved-changes --skip-tests (CanDeactivate)
 npm install bootswatch
 npm install @kolkov/ngx-gallery
+npm install @angular/cdk
+ng add ngx-spinner
+
+
 -- tạo module shared lưu trữ modules bên thứ 3
 ng g m shared --flat
--- tạo interceptor error
+-- tạo interceptor
 ng g interceptor error --skip-tests
 ng g interceptor jwt --skip-tests
+ng g interceptor loading --skip-tests
 -- thêm es2019 vào file tsconfig.json
 
+-------------------Api
 thêm thư viện 
 AutoMapper.Extensions.Microsoft.DependencyInjection
+
+trong angular 
+- () nghĩa là truyền từ view -> angular
+- [] nghĩa là nhận từ angular -> view
+- [()] nghĩa là binding 2 hướng
+
