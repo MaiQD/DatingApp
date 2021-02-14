@@ -19,6 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(error => {
         if (error) {
+          console.log(error);
           switch (error.status) {
             case 400:
               if (error.error.errors) {
@@ -31,11 +32,11 @@ export class ErrorInterceptor implements HttpInterceptor {
                 throw modalStateErrors.flat();
               }
               else {
-                this.toastr.error(error.statusText, error.status);
+                this.toastr.error(error.error, error.status);
               }
               break;
             case 401:
-              this.toastr.error(error.statusText, error.status);
+              this.toastr.error("you don't have permission to perform this action", error.status);
               break;
             case 404:
               this.router.navigateByUrl('/not-found');
