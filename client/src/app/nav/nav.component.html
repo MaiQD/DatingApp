@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/" routerLinkActive='active'>Dating App</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <ng-container *ngIf="accountService.currentUser$|async">
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLink="/members" routerLinkActive='active'>Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/lists" routerLinkActive='active'>Lists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/messages" routerLinkActive='active'>Messagers</a>
+                    </li>
+                </ng-container>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/errors" routerLinkActive='active'>Errors</a>
+                </li>
+            </ul>
+            <div class="dropdown open" dropdown *ngIf="(accountService.currentUser$|async) as user">
+                <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
+                <button class="btn btn-secondary dropdown-toggle ml-2" dropdownToggle type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Welcome {{user.knownAs| titlecase}}
+                </button>
+                <div class="dropdown-menu" *dropdownMenu aria-labelledby="triggerId">
+                    <button routerLink="/member/edit" class="dropdown-item" href="#">Edit Profile</button>
+                    <div class="dropdowndivider"></div>
+                    <button class="dropdown-item" href="#" (click)="logout()">Logout</button>
+                </div>
+            </div>
+
+            <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+                <!-- <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username"> -->
+                <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username">
+                <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password" placeholder="Password">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</nav>

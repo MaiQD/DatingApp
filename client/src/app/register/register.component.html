@@ -1,0 +1,46 @@
+<div class="d-flex col-sm-7 col-md-5 col-lg-12 px-0 px-xl-4 mx-auto">
+    <div class="w-100">
+        <h4 class="text-center text-lighter font-weight-normal mt-5 mb-3">Create an Account</h4>
+
+        <!-- Form -->
+        <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="registerForm.valid && register()">
+            <div class="form-group">
+                <label style="margin-right: 10px;" class="control-lable">I am a: </label>
+                <label class="radio-inline">
+                    <input type="radio" value="male" formControlName="gender"> Male
+                </label>
+                <label class="radio-inline">
+                    <input class="ml-3" type="radio" value="female" formControlName="gender"> Female
+                </label>
+
+            </div>
+            <app-text-input [label]='"Username"' [formControl]='registerForm.controls["username"]'></app-text-input>
+            <app-text-input [label]='"Know As"' [formControl]='registerForm.controls["knownAs"]'></app-text-input>
+            <app-date-input [label]='"Date of Birth"' [formControl]='registerForm.controls["dateOfBirth"]' [maxDate]='maxDate'></app-date-input>
+            <app-text-input [label]='"City"' [formControl]='registerForm.controls["city"]'></app-text-input>
+            <app-text-input [label]='"Country"' [formControl]='registerForm.controls["country"]'></app-text-input>
+            <app-text-input [label]='"Password"' [formControl]='registerForm.controls["password"]' [type]='"password"'></app-text-input>
+            <app-text-input [label]='"Confirm Password"' [formControl]='registerForm.controls["confirmPassword"]' [type]='"password"'></app-text-input>
+            <ng-container *ngIf="errors.length>0">
+                <ul class="text-danger">
+                    <li *ngFor="let error of errors">{{error}}</li>
+                </ul>
+            </ng-container>
+            <button [disabled]='!registerForm.valid' type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
+            <a class="btn btn-secondary btn-block " href="javascript:void(0)" (click)="cancel()">Cancel</a>
+            <div class=" small mt-4">
+                By clicking "Sign Up", you agree to our
+                <a href="javascript:void(0)">terms of service and privacy policy</a>. We’ll occasionally send you account related emails.
+            </div>
+        </form>
+        <!-- <p>Form value: {{registerForm.value|json}}</p>
+        <p>Form status: {{registerForm.status|json}}</p> -->
+        <!-- / Form -->
+
+        <div class="text-center text-muted">
+            Already have an account?
+            <a href="javascript:void(0)">Sign In</a>
+        </div>
+
+    </div>
+</div>

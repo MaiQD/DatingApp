@@ -18,7 +18,7 @@
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
-                        "aot": false,
+                        "aot": true,
                         "assets": [
                             "src/favicon.ico",
                             "src/assets"
@@ -26,6 +26,9 @@
                         "styles": [
                             "./node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+                            "./node_modules/bootswatch/dist/sandstone/bootstrap.css",
+                            "./node_modules/font-awesome/css/font-awesome.css",
+                            "./node_modules/ngx-toastr/toastr.css",
                             "src/styles.css"
                         ],
                         "scripts": []
@@ -41,7 +44,6 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -126,5 +128,8 @@
             }
         }
     },
-    "defaultProject": "client"
+    "defaultProject": "client",
+    "cli": {
+        "analytics": "2520587e-0e06-4ddd-a44e-307e192ec9e9"
+    }
 }
