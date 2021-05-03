@@ -7,7 +7,7 @@
             <i class="fa fa-user"></i>
         </button>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item" (click)="addLike(member)">
                 <button class="btn btn-danger">
             <i class="fa fa-heart"></i>
         </button>
@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div class="card-body p-1">
-        <h6 class="card-title text-center mb-1"><i class="fa fa-user mr-2"></i> {{member.knownAs}}
+        <h6 class="card-title text-center mb-1"><i class="fa fa-user mr-2"></i> {{member.knownAs}}, {{member.age}}
         </h6>
         <p class="card-text text-muted text-center">{{member.city}}</p>
     </div>

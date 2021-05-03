@@ -1,5 +1,6 @@
 ﻿using API.DTOs;
 using API.Entities;
+using API.Helper;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -22,9 +23,25 @@ namespace API.Data
 			_mapper = mapper;
 		}
 
-		public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+		public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
 		{
-			return await _context.AppUsers.ProjectTo<MemberDto>(_mapper.ConfigurationProvider).ToListAsync();
+			// AsNoTracking bảo EF ngừng tracking entities, khi entities chỉ dùng để đọc
+			var query = _context.AppUsers.AsQueryable();
+
+			query = query.Where(u => u.UserName != userParams.CurrentUsername);
+			query = query.Where(u => u.Gender == userParams.Gender);
+
+			var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+			var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
+			query = query.Where(u => u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob);
+
+			query = userParams.OrderBy switch
+			{
+				"created" => query.OrderByDescending(p => p.Created),
+				_ => query.OrderByDescending(p => p.LastActive)
+			};
+
+			return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>(_mapper.ConfigurationProvider).AsNoTracking(), userParams.PageNumber, userParams.PageSize);
 		}
 
 		public async Task<MemberDto> GetMemberUsernameAsync(string username)

@@ -23,9 +23,7 @@ namespace API.Entities
 		public string City { get; set; }
 		public string Country { get; set; }
 		public virtual ICollection<Photo> Photos { get; set; }
-		//public int GetAge()
-		//{
-		//	return DateOfBirth.CalculateAge();
-		//}
+		public virtual ICollection<UserLike> LikedByUsers { get; set; }
+		public virtual ICollection<UserLike> LikedUsers { get; set; }
 	}
 }

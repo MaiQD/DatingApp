@@ -12,17 +12,17 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(private accountService: AccountService,
     private toast: ToastrService) {
-    
+
   }
-  
-  canActivate(): Observable<boolean>  {
+
+  canActivate(): Observable<boolean> {
     return this.accountService.currentUser$.pipe(
-      map( user =>{
-        if(user)
+      map(user => {
+        if (user)
           return true;
-          this.toast.error("You don't have permission.");
+        this.toast.error("You don't have permission.");
       })
     )
   }
-  
+
 }
