@@ -50,7 +50,7 @@ namespace API.Controllers
 			return Ok(users);
 		}
 		[HttpGet("{username}",Name ="GetUser")]
-		public async Task<ActionResult<MemberDto>> GetUsers(string username)
+		public async Task<ActionResult<MemberDto>> GetUser(string username)
 		{
 			return await _userRepository.GetMemberUsernameAsync(username);
 		}
