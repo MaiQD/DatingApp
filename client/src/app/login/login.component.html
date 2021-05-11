@@ -1,0 +1,26 @@
+<h4 class="text-center text-lighter font-weight-normal mt-5 mb-3">
+    Login to Your Account</h4>
+
+<!-- Form -->
+<form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="loginForm.valid && login()" class="my-5">
+    <app-text-input [label]='"Username"' [formControl]='loginForm.controls["username"]'></app-text-input>
+    <app-text-input [label]='"Password"' [formControl]='loginForm.controls["password"]' [type]='"password"'></app-text-input>
+    <ng-container *ngIf="errors.length>0">
+        <ul class="text-danger">
+            <li *ngFor="let error of errors">{{error}}</li>
+        </ul>
+    </ng-container>
+    <div class="d-flex justify-content-between align-items-center m-0">
+        <label class="custom-control custom-checkbox m-0">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-label">Remember me</span>
+            </label>
+        <button [disabled]='!loginForm.valid' type="submit" class="btn btn-primary">Sign In</button>
+    </div>
+</form>
+<!-- / Form -->
+
+<div class="text-center text-muted">
+    Don't have an account yet?
+    <a (click)="register()" href="javascript:void(0)">Sign Up</a>
+</div>

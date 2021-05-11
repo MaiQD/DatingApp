@@ -27,6 +27,8 @@ ng g c nav --skip-tests
 -- tạo service
 ng g s account --skip-tests
 ng g s busy --skip-test
+-- tạo directive
+ng g d has-role --skip-tests
 
 -- cài đặt ngx-toastr
 npm install ngx-toastr

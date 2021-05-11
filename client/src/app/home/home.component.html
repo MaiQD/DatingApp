@@ -3,7 +3,7 @@
 
         <!-- Side container -->
         <!-- Do not display the container on extra small, small and medium screens -->
-        <div [ngClass]="{'col-lg-8': registerMode,'col-lg-12': !registerMode}" class="d-none d-lg-flex  align-items-center ui-bg-cover ui-bg-overlay-container p-5" style="background-image: url('../assets/img/bg/21.jpg');">
+        <div class="d-none d-lg-flex  align-items-center ui-bg-cover ui-bg-overlay-container p-5 col-lg-8" style="background-image: url('../assets/img/bg/21.jpg');">
             <div class="ui-bg-overlay bg-dark opacity-50"></div>
 
             <!-- Text -->
@@ -22,9 +22,17 @@
         <!-- / Side container -->
 
         <!-- Form container -->
-        <div *ngIf="registerMode" [@slideInOut] class="d-flex col-lg-4 align-items-center bg-white p-5">
-            <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
-
+        <div class="d-flex col-lg-4 align-items-center bg-white p-5">
+            <div class="d-flex col-sm-7 col-md-5 col-lg-12 px-0 px-xl-4 mx-auto">
+                <div class="w-100">
+                    <ng-container *ngIf="registerMode">
+                        <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                    </ng-container>
+                    <ng-container *ngIf="!registerMode">
+                        <app-login (changeRegister)="cancelRegisterMode($event)"></app-login>
+                    </ng-container>
+                </div>
+            </div>
         </div>
         <!-- / Form container -->
 
