@@ -2,6 +2,7 @@
 using API.Helper;
 using API.Interfaces;
 using API.Services;
+using API.SingleR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,8 @@ namespace API.Extensions
 	{
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration _config)
 		{
+			services.AddSingleton<PresenceTracker>();
+
 			services.Configure<CloudinarySettings>(_config.GetSection("CloudingSettings"));
 			//tạo dependency injection cho Token Service
 			services.AddScoped<ITokenService, TokenService>();

@@ -40,7 +40,7 @@ npm install @kolkov/ngx-gallery
 npm install @angular/cdk
 ng add ngx-spinner
 npm install ng2-file-upload
-
+npm install @microsoft/signalr
 
 -- tạo module shared lưu trữ modules bên thứ 3
 ng g m shared --flat
