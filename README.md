@@ -60,3 +60,15 @@ trong angular
 - [] nghĩa là nhận từ angular -> view
 - [()] nghĩa là binding 2 hướng
 
+
+
+------------ publish 
+angular.json
+    --tạo static file trong API
+    "outputPath": "../API/wwwroot",
+Startup.cs
+    app.UseDefaultFiles();
+	app.UseStaticFiles();
+ng build
+-- build tối ưu
+ng build --prod
