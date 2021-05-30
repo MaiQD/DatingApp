@@ -6,10 +6,6 @@ using API.SingleR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Extensions
 {
@@ -23,10 +19,8 @@ namespace API.Extensions
 			//tạo dependency injection cho Token Service
 			services.AddScoped<ITokenService, TokenService>();
 			services.AddScoped<IPhotoSevice, PhotoService>();
-			services.AddScoped<ILikesRepository, LikesRepository>();
-			services.AddScoped<IMessageRepository, MessageRepository>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddScoped<LogUserActivity>();
-			services.AddScoped<IUserRepository, UserRepositoty>();
 			services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 			services.AddDbContext<DataContext>(options =>
 			{

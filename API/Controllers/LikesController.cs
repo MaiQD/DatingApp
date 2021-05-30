@@ -13,27 +13,24 @@ namespace API.Controllers
 {
 	public class LikesController : BaseApiController
 	{
-		private readonly IUserRepository _userRepository;
-		private readonly ILikesRepository _likesRepository;
+		private readonly IUnitOfWork _unitOfWork;
 
-		public LikesController(IUserRepository userRepository,
-			ILikesRepository likesRepository)
+		public LikesController(IUnitOfWork unitOfWork)
 		{
-			_userRepository = userRepository;
-			_likesRepository = likesRepository;
+			_unitOfWork = unitOfWork;
 		}
 		[HttpPost("{username}")]
 		public async Task<ActionResult> AddLike(string username)
 		{
 			var currentUserId = User.GetUserId();
-			var likedUser = await _userRepository.GetUserByUsernameAsync(username);
-			var currentUser = await _likesRepository.GetUserWithLike(currentUserId);
+			var likedUser = await _unitOfWork.UserRepository.GetUserByUsernameAsync(username);
+			var currentUser = await _unitOfWork.LikesRepository.GetUserWithLike(currentUserId);
 
 			if (likedUser == null)
 				return NotFound();
 			if (username == currentUser.UserName)
 				return BadRequest("You cannot like yourself");
-			var userLike = await _likesRepository.GetUserLike(currentUserId, likedUser.Id);
+			var userLike = await _unitOfWork.LikesRepository.GetUserLike(currentUserId, likedUser.Id);
 			if (userLike != null)
 				return BadRequest("You already like this user");
 
@@ -43,7 +40,7 @@ namespace API.Controllers
 				SourceUserId = currentUser.Id
 			};
 			currentUser.LikedUsers.Add(userLike);
-			if (await _userRepository.SaveAllAsync())
+			if (await _unitOfWork.Complete())
 				return Ok();
 			return BadRequest("Failed to like this user");
 
@@ -52,7 +49,7 @@ namespace API.Controllers
 		public async Task<ActionResult<IEnumerable<LikeDto>>> GetUserLike([FromQuery]LikesParams likesParams)
 		{
 			likesParams.UserId = User.GetUserId();
-			var users =  await _likesRepository.GetUserLikes(likesParams);
+			var users =  await _unitOfWork.LikesRepository.GetUserLikes(likesParams);
 
 			Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
 
