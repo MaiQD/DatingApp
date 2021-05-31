@@ -72,3 +72,14 @@ Startup.cs
 ng build
 -- build tối ưu
 ng build --prod
+
+
+------------ Postgres
+docker run --name dev -e POSTGRES_USER=appuser -e POSTGRES_PASSWORD=a123 -p 5432:5432 -d postgres:latest
+
+------------ Heroku
+heroku git:remote -a datingapp-maiqd
+heroku buildpacks:set jincod/dotnetcore
+heroku config:set ASPNETCORE_ENVIRONMENT=Production
+
+git push heroku main:master
