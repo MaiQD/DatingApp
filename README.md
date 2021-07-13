@@ -55,14 +55,14 @@ thêm thư viện
 AutoMapper.Extensions.Microsoft.DependencyInjection
 CloudinaryDotNet
 
-## angular 
+## Angular 
 - () nghĩa là truyền từ view -> angular
 - [] nghĩa là nhận từ angular -> view
 - [()] nghĩa là binding 2 hướng
 
 
 
-## publish 
+## Publish 
 angular.json
     --tạo static file trong API
     "outputPath": "../API/wwwroot",
@@ -77,7 +77,7 @@ Startup.cs
 ## Postgres
 - docker run --name dev -e POSTGRES_USER=appuser -e POSTGRES_PASSWORD=a123 -p 5432:5432 -d postgres:latest
 
------------- Heroku
+## Heroku
 - heroku git:remote -a datingapp-maiqd
 - heroku buildpacks:set jincod/dotnetcore
 - heroku config:set ASPNETCORE_ENVIRONMENT=Production
